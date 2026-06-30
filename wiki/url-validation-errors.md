@@ -42,6 +42,7 @@ Most validation errors are **non-fatal** — parsing continues and produces a UR
 - [[url-parsing-algorithm]]
 - [[url-host-parsing]]
 - [[url-ipv4]]
+- [[uri-security-considerations]] — RFC 3986 §7.4 names the IP-format ambiguity these errors close off
 
 ## Sources
 

@@ -62,6 +62,8 @@ The parser returns **failure** on unrecoverable errors such as:
 - [[url-parser-states]]
 - [[url-host-parsing]]
 - [[url-percent-encoding]]
+- [[uri-reference-resolution]] — RFC 3986's relative-reference resolution algorithm, this parser's conceptual ancestor
+- [[uri-vs-whatwg-url]]
 
 ## Sources
 

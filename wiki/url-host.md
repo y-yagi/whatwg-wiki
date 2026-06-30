@@ -44,6 +44,8 @@ Any domain that is a **loopback** IPv4/IPv6 address is also considered local.
 - [[url-ipv4]]
 - [[url-ipv6]]
 - [[url-record]]
+- [[uri-host]] — RFC 3986's `reg-name`/`IPv4address`/`IP-literal` predecessor grammar
+- [[uri-vs-whatwg-url]]
 
 ## Sources
 

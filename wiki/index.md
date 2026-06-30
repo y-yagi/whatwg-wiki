@@ -30,3 +30,20 @@
 ## Infra
 
 ## Cross-Spec Concepts
+
+### RFC 3986 (URI Generic Syntax)
+
+The IETF predecessor/foundation underlying the WHATWG URL Standard. Not a WHATWG spec — included for historical context and comparison.
+
+- [[uri-generic-syntax]] — top-level URI grammar, hier-part forms, design considerations
+- [[uri-terminology]] — URI vs. URL vs. URN, why RFC 3986 deprecates the URL/URN split
+- [[uri-scheme]] — scheme ABNF, case-insensitivity
+- [[uri-authority]] — userinfo, host, port grammar
+- [[uri-host]] — IP-literal/IPv4address/reg-name grammar
+- [[uri-path]] — five mutually exclusive path forms, dot segments
+- [[uri-query-fragment]] — query/fragment grammar and fragment-is-client-side-only semantics
+- [[uri-reserved-characters]] — gen-delims/sub-delims/unreserved, percent-encoding mechanism
+- [[uri-reference-resolution]] — relative reference resolution algorithm (transform references, merge paths, remove dot segments), worked examples
+- [[uri-normalization]] — comparison ladder: string, syntax-based, scheme-based, protocol-based
+- [[uri-security-considerations]] — userinfo confusability, IP-format ambiguity, semantic attacks
+- [[uri-vs-whatwg-url]] — point-by-point contrast with the WHATWG URL Standard

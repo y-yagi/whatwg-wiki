@@ -51,6 +51,7 @@ Used by `URLSearchParams` serialization:
 - [[url-percent-encode-sets]]
 - [[url-parsing-algorithm]]
 - [[url-api]]
+- [[uri-reserved-characters]] — RFC 3986's reserved/unreserved split that this hierarchy refines
 
 ## Sources
 

@@ -71,6 +71,7 @@ Validation errors are non-fatal warnings emitted during parsing for inputs that 
 - [[url-parsing-algorithm]]
 - [[url-host]]
 - [[url-serialization]]
+- [[uri-vs-whatwg-url]] — special schemes, base URLs, and equivalence contrasted against RFC 3986
 
 ## Sources
 

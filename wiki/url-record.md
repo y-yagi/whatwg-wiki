@@ -49,6 +49,8 @@ A URL record is the internal representation of a URL — a struct of typed field
 - [[url-serialization]]
 - [[url-host]]
 - [[url-api]]
+- [[uri-generic-syntax]] — RFC 3986's scheme/authority/path/query/fragment model this struct mirrors
+- [[uri-vs-whatwg-url]]
 
 ## Sources
 

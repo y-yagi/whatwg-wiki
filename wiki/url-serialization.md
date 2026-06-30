@@ -49,6 +49,8 @@ A URL's **origin** depends on its scheme:
 - [[url-record]]
 - [[url-host-parsing]]
 - [[url-api]]
+- [[uri-reference-resolution]] — RFC 3986 §5.3 component recomposition, this serializer's ancestor
+- [[uri-normalization]]
 
 ## Sources
 
