@@ -1,7 +1,7 @@
 ---
 spec: url
 tags: [algorithm, concept]
-updated: 2026-06-30
+updated: 2026-07-01
 ---
 
 # Percent Encoding
@@ -48,7 +48,6 @@ Used by `URLSearchParams` serialization:
 
 ## See Also
 
-- [[url-percent-encode-sets]]
 - [[url-parsing-algorithm]]
 - [[url-api]]
 - [[uri-reserved-characters]] — RFC 3986's reserved/unreserved split that this hierarchy refines

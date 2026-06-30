@@ -1,7 +1,7 @@
 ---
 spec: url
 tags: [concept]
-updated: 2026-06-30
+updated: 2026-07-01
 ---
 
 # URL Host
@@ -30,13 +30,11 @@ These cannot appear (percent-decoded) in any host:
 
 ## Forbidden Domain Code Points
 
-Superset of forbidden host code points, additionally forbidding:
-`%`, `U+007F DELETE`, C0 controls, and various other code points not valid in domain labels.
+A forbidden domain code point is a forbidden host code point, a C0 control, `U+0025 (%)`, or `U+007F DELETE`. No other code points are forbidden in domains.
 
 ## Localhost
 
-The string `"localhost"` has special treatment in `file:` URLs — it is treated the same as an empty host.
-Any domain that is a **loopback** IPv4/IPv6 address is also considered local.
+The string `"localhost"` has special treatment in `file:` URLs — the file host state sets it to an empty host rather than keeping it as a domain.
 
 ## See Also
 

@@ -30,6 +30,13 @@ RFC 2396 was itself updated by RFC 2732 (added the `[...]` IPv6 literal-address 
 ## See Also
 
 - [[rfc2396-grammar]]
+- [[rfc2396-scheme-authority]]
+- [[rfc2396-host]]
+- [[rfc2396-path]]
+- [[rfc2396-query-fragment]]
+- [[rfc2396-reserved-characters]]
+- [[rfc2396-reference-resolution]]
+- [[rfc2396-security-considerations]]
 - [[rfc2396-vs-rfc3986]]
 - [[uri-generic-syntax]]
 - [[uri-terminology]]

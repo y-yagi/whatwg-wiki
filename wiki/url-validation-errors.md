@@ -1,7 +1,7 @@
 ---
 spec: url
 tags: [concept]
-updated: 2026-06-30
+updated: 2026-07-01
 ---
 
 # URL Validation Errors
@@ -42,6 +42,7 @@ Most validation errors are **non-fatal** — parsing continues and produces a UR
 - [[url-parsing-algorithm]]
 - [[url-host-parsing]]
 - [[url-ipv4]]
+- [[url-concepts]] — non-fatal-warning summary; this page is the full error reference
 - [[uri-security-considerations]] — RFC 3986 §7.4 names the IP-format ambiguity these errors close off
 
 ## Sources
