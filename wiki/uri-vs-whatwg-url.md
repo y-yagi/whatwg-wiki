@@ -43,6 +43,7 @@ The five-component model (scheme, authority, path, query, fragment), the `%XX` p
 - [[url-parsing-algorithm]]
 - [[url-record]]
 - [[url-concepts]]
+- [[rfc2396-vs-rfc3986]]
 
 ## Sources
 

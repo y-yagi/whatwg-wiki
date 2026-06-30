@@ -39,6 +39,7 @@ The WHATWG URL Standard preserves the "fragment is client-side only, not sent to
 - [[url-percent-encoding]]
 - [[url-api]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-query-fragment]]
 
 ## Sources
 

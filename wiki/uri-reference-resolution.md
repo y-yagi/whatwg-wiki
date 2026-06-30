@@ -91,6 +91,7 @@ The WHATWG URL Standard's "parse relative" / [[url-parsing-algorithm|basic URL p
 - [[url-parsing-algorithm]]
 - [[url-concepts]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-reference-resolution]]
 
 ## Sources
 

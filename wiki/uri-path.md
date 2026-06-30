@@ -50,6 +50,7 @@ The WHATWG URL Standard's [[url-record|path]] field collapses these five grammar
 - [[uri-reserved-characters]]
 - [[url-record]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-path]]
 
 ## Sources
 

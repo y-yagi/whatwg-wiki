@@ -43,6 +43,7 @@ The WHATWG URL Standard's stricter, deterministic parser closes off several of t
 - [[uri-reserved-characters]]
 - [[url-validation-errors]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-security-considerations]]
 
 ## Sources
 

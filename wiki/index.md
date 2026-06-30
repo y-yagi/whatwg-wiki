@@ -47,3 +47,18 @@ The IETF predecessor/foundation underlying the WHATWG URL Standard. Not a WHATWG
 - [[uri-normalization]] — comparison ladder: string, syntax-based, scheme-based, protocol-based
 - [[uri-security-considerations]] — userinfo confusability, IP-format ambiguity, semantic attacks
 - [[uri-vs-whatwg-url]] — point-by-point contrast with the WHATWG URL Standard
+
+### RFC 2396 (URI Generic Syntax, obsoleted by RFC 3986)
+
+RFC 3986's direct predecessor. Not a WHATWG spec — included for historical context; see [[rfc2396-vs-rfc3986]] for the grammar-level diff against its successor.
+
+- [[rfc2396-overview]] — scope, document history (RFC 1738/1808 → 2396 → 2732 → 3986), obsoleted-by status
+- [[rfc2396-grammar]] — absoluteURI/relativeURI/URI-reference, the hier_part/opaque_part URL/URN split
+- [[rfc2396-scheme-authority]] — scheme, authority = server | reg_name, userinfo/hostport grammar
+- [[rfc2396-host]] — hostname/IPv4address grammar, the RFC 2732 IPv6 bracket-syntax update
+- [[rfc2396-path]] — abs_path/rel_path/opaque_part, segment `;param` matrix-parameter structure
+- [[rfc2396-query-fragment]] — query/fragment grammar, fragment defined under URI references (§4)
+- [[rfc2396-reserved-characters]] — flat reserved set, the `mark` character class, "unwise" characters
+- [[rfc2396-reference-resolution]] — relative resolution algorithm, worked examples, the `http:g` loophole
+- [[rfc2396-security-considerations]] — port-confusion attacks, escaped-delimiter injection, userinfo passwords
+- [[rfc2396-vs-rfc3986]] — full point-by-point diff: grammar notation, character classes, authority/host, path, terminology

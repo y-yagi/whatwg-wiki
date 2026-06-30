@@ -6,7 +6,7 @@ updated: 2026-07-01
 
 # URI Generic Syntax (RFC 3986)
 
-RFC 3986 defines the generic syntax for **Uniform Resource Identifiers (URIs)** — a scheme-independent grammar that every URI scheme (http, ftp, mailto, urn, tel, ...) builds on. It predates and underlies the WHATWG URL Standard; see [[uri-vs-whatwg-url]] for how the two diverge.
+RFC 3986 defines the generic syntax for **Uniform Resource Identifiers (URIs)** — a scheme-independent grammar that every URI scheme (http, ftp, mailto, urn, tel, ...) builds on. It predates and underlies the WHATWG URL Standard; see [[uri-vs-whatwg-url]] for how the two diverge. RFC 3986 itself obsoletes [[rfc2396-overview|RFC 2396]]; see [[rfc2396-vs-rfc3986]] for the grammar-level diff.
 
 ## Top-Level Grammar
 
@@ -57,6 +57,8 @@ See [[uri-path]] for the full set of path forms (including the relative-referenc
 - [[uri-reserved-characters]]
 - [[uri-terminology]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-grammar]]
+- [[rfc2396-vs-rfc3986]]
 
 ## Sources
 

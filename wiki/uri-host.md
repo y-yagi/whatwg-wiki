@@ -43,6 +43,7 @@ RFC 3986 treats hostname validity as scheme-specific (deferred to whatever resol
 - [[url-ipv4]]
 - [[url-ipv6]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-host]]
 
 ## Sources
 

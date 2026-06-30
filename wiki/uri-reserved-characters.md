@@ -55,6 +55,7 @@ The WHATWG URL Standard keeps the same `%XX` mechanism and the same reserved/unr
 - [[uri-normalization]]
 - [[url-percent-encoding]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-reserved-characters]]
 
 ## Sources
 

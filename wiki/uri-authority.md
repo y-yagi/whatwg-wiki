@@ -49,6 +49,7 @@ The WHATWG URL Standard's [[url-parser-states|Authority state]] parses the same 
 - [[uri-reserved-characters]]
 - [[url-parser-states]]
 - [[uri-vs-whatwg-url]]
+- [[rfc2396-scheme-authority]]
 
 ## Sources
 

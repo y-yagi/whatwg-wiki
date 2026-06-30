@@ -16,7 +16,7 @@ updated: 2026-07-01
 
 RFC 3986 explicitly **deprecates the URL/URN split** as a formal taxonomy. §1.1.3 states that the terms "URL" and "URN" should be considered historical, and that specifications "should use the general term 'URI' rather than the more restrictive terms 'URL' and 'URN'." Under this RFC, every URL and every URN is simply a URI — there is no syntactic distinction in the generic grammar between an identifier that "locates" versus one that merely "names."
 
-This was a deliberate correction: RFC 2396 (RFC 3986's predecessor) had structurally separated `absoluteURI` into URL-like and URN-like productions; RFC 3986 unified them into the single `URI` grammar described in [[uri-generic-syntax]].
+This was a deliberate correction: [[rfc2396-overview|RFC 2396]] (RFC 3986's predecessor) had structurally separated `absoluteURI` into URL-like (`hier_part`) and URN-like (`opaque_part`) productions — see [[rfc2396-grammar]]; RFC 3986 unified them into the single `URI` grammar described in [[uri-generic-syntax]]. Full diff at [[rfc2396-vs-rfc3986]].
 
 ## Example Schemes (§1.1.2)
 
@@ -31,6 +31,8 @@ Despite RFC 3986's recommendation, colloquial and even spec usage on the web rev
 - [[uri-generic-syntax]]
 - [[uri-vs-whatwg-url]]
 - [[url-record]]
+- [[rfc2396-grammar]]
+- [[rfc2396-vs-rfc3986]]
 
 ## Sources
 
