@@ -25,4 +25,4 @@ Follow the agent behavior defined in CLAUDE.md under 'On ingest':
 
 Do not ask for confirmation. Proceed autonomously."
 
-claude --print "$PROMPT"
+claude --print --permission-mode acceptEdits "$PROMPT"

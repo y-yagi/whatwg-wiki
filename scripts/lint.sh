@@ -16,4 +16,4 @@ PROMPT="You are auditing a personal WHATWG wiki. Follow the agent behavior defin
 
 Do not ask for confirmation. Proceed autonomously."
 
-claude --print "$PROMPT"
+claude --print --permission-mode acceptEdits "$PROMPT"
