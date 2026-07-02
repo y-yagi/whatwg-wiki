@@ -66,6 +66,18 @@ The IETF's IRI companion to RFC 3986, extending URI syntax to Unicode. Not a WHA
 - [[iri-vs-uri]] — point-by-point contrast with RFC 3986
 - [[iri-vs-whatwg-url]] — point-by-point contrast with the WHATWG URL Standard's inline internationalization handling
 
+### UTS #46 (Unicode IDNA Compatibility Processing)
+
+A Unicode Consortium spec (not IETF, not WHATWG) that WHATWG's [[url-host-parsing|domain-to-ASCII step]] delegates to directly. Bridges IDNA2003 (RFC 3490/3491, see [[iri-idna]]) and IDNA2008 (RFC 5890–5895) into one deterministic algorithm.
+
+- [[idna-uts46-overview]] — purpose, ToASCII/ToUnicode operations, why it exists, WHATWG's flag choices
+- [[idna-mapping-table]] — per-code-point Status values (valid/ignored/mapped/deviation/disallowed), informative NV8/XV8 fields
+- [[idna-processing-algorithm]] — the shared Map → Normalize → Break → Convert/Validate steps
+- [[idna-validity-criteria]] — the nine per-label validity conditions and which WHATWG enforces
+- [[idna-toascii-tounicode]] — ToASCII/ToUnicode algorithm steps, DNS length verification, WHATWG's usage
+- [[idna-transitional-processing]] — transitional vs. nontransitional processing, the ß/ς/ZWNJ/ZWJ deviation characters
+- [[idna-registry-security]] — registry guidance, confusable-label bundling, CONTEXTJ spoofing mitigation limits
+
 ### RFC 2396 (URI Generic Syntax, obsoleted by RFC 3986)
 
 RFC 3986's direct predecessor. Not a WHATWG spec — included for historical context; see [[rfc2396-vs-rfc3986]] for the grammar-level diff against its successor.

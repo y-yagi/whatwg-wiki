@@ -20,12 +20,14 @@ The **host parser** takes a string and an `isOpaque` boolean, returning a host o
 
 ## IDNA Processing (domain-to-ASCII)
 
-Delegates to UTS #46 (Unicode IDNA Compatibility Processing) with:
+Delegates to [[idna-uts46-overview|UTS #46 (Unicode IDNA Compatibility Processing)]] — specifically its [[idna-toascii-tounicode|ToASCII]] operation — with:
 - `checkHyphens = false`
 - `checkBidi = false`
 - `checkJoiners = false`
 - `useSTD3ASCIIRules = false`
-- `transitionalProcessing = false`
+- `transitionalProcessing = false` (see [[idna-transitional-processing]] for what this means for deviation characters like ß/ς/ZWNJ/ZWJ)
+
+This disables nearly every optional strictness check UTS #46 offers; see [[idna-validity-criteria]] for exactly which of the nine validity criteria remain enforced under these flags. `VerifyDnsLength` is not set, so the 253/63-character DNS length limits are not enforced here either (see [[idna-toascii-tounicode]]).
 
 Emits a `domain-to-ASCII` validation error on failure. Returns failure if the result is the empty string.
 
@@ -51,6 +53,10 @@ For non-special URLs (`isOpaque = true`):
 - [[url-ipv4]]
 - [[url-ipv6]]
 - [[url-parsing-algorithm]]
+- [[idna-uts46-overview]]
+- [[idna-toascii-tounicode]]
+- [[idna-validity-criteria]]
+- [[idna-transitional-processing]]
 
 ## Sources
 
