@@ -26,7 +26,7 @@ Because [[iri-to-uri-mapping|IRI→URI conversion]] and its reverse mandate UTF-
 
 ## IDN Spoofing
 
-[[iri-idna|IDNA-processed domain labels]] inherit all of the well-known internationalized-domain-name spoofing risk: two different Unicode domain labels can produce visually identical rendered glyphs while resolving to entirely different Punycode/ASCII labels and thus different hosts.
+[[iri-idna|IDNA-processed domain labels]] inherit all of the well-known internationalized-domain-name spoofing risk: two different Unicode domain labels can produce visually identical rendered glyphs while resolving to entirely different Punycode/ASCII labels and thus different hosts. Both IDNA generations acknowledge this openly rather than solving it: [[idna2008-security-considerations|IDNA2008 (RFC 5890 §4.4)]] states plainly that "there are no comprehensive technical solutions to the problems of confusable characters," and [[idna-registry-security|UTS #46]] pushes mitigation to registry-side bundling policy instead of the parsing algorithm.
 
 ## Relationship to WHATWG
 

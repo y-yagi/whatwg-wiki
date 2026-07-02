@@ -78,6 +78,15 @@ A Unicode Consortium spec (not IETF, not WHATWG) that WHATWG's [[url-host-parsin
 - [[idna-transitional-processing]] — transitional vs. nontransitional processing, the ß/ς/ZWNJ/ZWJ deviation characters
 - [[idna-registry-security]] — registry guidance, confusable-label bundling, CONTEXTJ spoofing mitigation limits
 
+### RFC 5890 (IDNA2008: Definitions and Document Framework)
+
+The IETF standard UTS #46 was built to bridge against [[iri-idna|IDNA2003]]. Replaces Nameprep's fixed blocklist with a Unicode-property-derived allowlist; not a WHATWG spec.
+
+- [[idna2008-overview]] — the six-document IDNA2008 set (RFC 5890–5895), why it replaced IDNA2003, audience/scope
+- [[idna2008-labels]] — LDH/NR-LDH/XN-label/A-label/U-label terminology, per-label validity model
+- [[idna2008-vs-idna2003]] — blocklist (Nameprep) vs. allowlist (PVALID/CONTEXTJ/CONTEXTO/DISALLOWED) shift, the ß/ς divergence
+- [[idna2008-security-considerations]] — §4: U-label length risks, local charset ambiguity, confusable characters, unassigned-code-point tradeoff
+
 ### RFC 2396 (URI Generic Syntax, obsoleted by RFC 3986)
 
 RFC 3986's direct predecessor. Not a WHATWG spec — included for historical context; see [[rfc2396-vs-rfc3986]] for the grammar-level diff against its successor.

@@ -27,6 +27,8 @@ When RFC 3987 recommends comparing IRIs by their IDN-normalized form, it calls f
 
 [[url-host-parsing|WHATWG's domain-to-ASCII step]] uses the newer **[[idna-uts46-overview|UTS #46]]** (Unicode IDNA Compatibility Processing) rather than RFC 3490/3491's older Nameprep/Punycode-only pipeline, and pins its flags explicitly: `checkHyphens = false`, `checkBidi = false`, `checkJoiners = false`, `useSTD3ASCIIRules = false`, `transitionalProcessing = false`. Where RFC 3987 leaves `ToASCII` invocation as an optional, scheme-dependent choice, WHATWG makes IDNA processing **mandatory and unconditional** for every special-scheme host — there is no percent-encoding fallback for domains in the WHATWG model. See [[iri-vs-whatwg-url]].
 
+UTS #46 was created specifically to bridge this RFC 3490/3491 (**IDNA2003**) pipeline with its IETF successor **IDNA2008** (RFC 5890–5895, see [[idna2008-overview]]), which replaced Nameprep's blocklist approach with a per-character allowlist. Where RFC 3987's Nameprep unconditionally case-folds and NFKC-normalizes, UTS #46 introduces the [[idna-transitional-processing|transitional/nontransitional distinction]] specifically to reconcile domains registered under either era — see [[idna-mapping-table]] and [[idna-validity-criteria]] for the mechanics.
+
 ## See Also
 
 - [[iri-syntax]]
@@ -35,6 +37,7 @@ When RFC 3987 recommends comparing IRIs by their IDN-normalized form, it calls f
 - [[url-host-parsing]]
 - [[uri-host]]
 - [[idna-uts46-overview]]
+- [[idna2008-overview]]
 
 ## Sources
 
