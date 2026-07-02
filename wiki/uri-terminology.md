@@ -24,12 +24,14 @@ This was a deliberate correction: [[rfc2396-overview|RFC 2396]] (RFC 3986's pred
 
 ## Contrast with the Web Platform
 
-Despite RFC 3986's recommendation, colloquial and even spec usage on the web reverted to "URL" as the dominant term — directly reflected in the name **WHATWG URL Standard** itself. The WHATWG spec does not use "URI" or "URN" as separate concepts at all: every absolute identifier processed by [[url-parsing-algorithm|the basic URL parser]] is called a URL, regardless of whether the underlying scheme is locating or naming. This goes a step further than just rejecting RFC 3986's URI/URL/URN split — WHATWG's [[url-goals|stated goals]] also fold in RFC 3987's separate "IRI" term (for internationalized URIs) rather than keep it as a fourth category, on the pragmatic grounds that the distinctions "confuse people" and a single algorithm already handles both cases in every implementation. See [[uri-vs-whatwg-url]] for the fuller comparison.
+Despite RFC 3986's recommendation, colloquial and even spec usage on the web reverted to "URL" as the dominant term — directly reflected in the name **WHATWG URL Standard** itself. The WHATWG spec does not use "URI" or "URN" as separate concepts at all: every absolute identifier processed by [[url-parsing-algorithm|the basic URL parser]] is called a URL, regardless of whether the underlying scheme is locating or naming. This goes a step further than just rejecting RFC 3986's URI/URL/URN split — WHATWG's [[url-goals|stated goals]] also fold in [[iri-overview|RFC 3987's]] separate "IRI" term (for internationalized URIs) rather than keep it as a fourth category, on the pragmatic grounds that the distinctions "confuse people" and a single algorithm already handles both cases in every implementation. See [[uri-vs-whatwg-url]] and [[iri-vs-whatwg-url]] for the fuller comparisons.
 
 ## See Also
 
 - [[uri-generic-syntax]]
 - [[uri-vs-whatwg-url]]
+- [[iri-overview]]
+- [[iri-vs-uri]]
 - [[url-record]]
 - [[url-goals]]
 - [[rfc2396-grammar]]

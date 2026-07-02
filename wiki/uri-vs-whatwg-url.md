@@ -6,7 +6,7 @@ updated: 2026-07-02
 
 # RFC 3986 vs. the WHATWG URL Standard
 
-RFC 3986 ("URI Generic Syntax") and the WHATWG URL Standard both define how to parse URLs/URIs, but they take fundamentally different approaches and disagree on several points. The WHATWG URL Standard's introduction explicitly positions itself as a response to RFC 3986's inadequacy for real-world web content — see [[url-goals]] for the spec's own stated objectives, which name RFC 3986 (and RFC 3987, IRI) directly as documents it intends to obsolete.
+RFC 3986 ("URI Generic Syntax") and the WHATWG URL Standard both define how to parse URLs/URIs, but they take fundamentally different approaches and disagree on several points. The WHATWG URL Standard's introduction explicitly positions itself as a response to RFC 3986's inadequacy for real-world web content — see [[url-goals]] for the spec's own stated objectives, which name RFC 3986 (and [[iri-overview|RFC 3987, IRI]]) directly as documents it intends to obsolete. This page covers the generic-syntax diff; see [[iri-vs-whatwg-url]] for the internationalization-specific diff.
 
 ## Core Philosophical Difference
 

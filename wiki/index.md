@@ -50,6 +50,22 @@ The IETF predecessor/foundation underlying the WHATWG URL Standard. Not a WHATWG
 - [[uri-security-considerations]] — userinfo confusability, IP-format ambiguity, semantic attacks
 - [[uri-vs-whatwg-url]] — point-by-point contrast with the WHATWG URL Standard
 
+### RFC 3987 (Internationalized Resource Identifiers)
+
+The IETF's IRI companion to RFC 3986, extending URI syntax to Unicode. Not a WHATWG spec — its scope (non-ASCII in identifiers) is what the WHATWG URL Standard's goals name as something to absorb and obsolete; see [[url-goals]].
+
+- [[iri-overview]] — definition, applicability conditions, why IRI is a separate protocol element from URI
+- [[iri-syntax]] — ABNF grammar: iunreserved, ucschar, iprivate ranges, i-prefixed productions
+- [[iri-to-uri-mapping]] — §3.1: NFC normalization + UTF-8 percent-encoding, optional IDNA ToASCII path
+- [[uri-to-iri-mapping]] — §3.2: the 5-step reverse mapping, UTF-8-only determinism constraint
+- [[iri-idna]] — ToASCII/ToUnicode, Nameprep, Punycode, contrast with WHATWG's UTS #46 pipeline
+- [[iri-bidi]] — §4: logical storage order vs. visual rendering, forbidden bidi controls, component-level RTL/LTR rules
+- [[iri-normalization-comparison]] — §5: comparison ladder extending RFC 3986's with NFC + IDN normalization
+- [[iri-security-considerations]] — §8: homograph attacks, bidi-override spoofing, encoding confusion, IDN spoofing
+- [[iri-processing-guidelines]] — §7: where IRI↔URI conversion belongs across interfaces, entry, transfer, generation, display
+- [[iri-vs-uri]] — point-by-point contrast with RFC 3986
+- [[iri-vs-whatwg-url]] — point-by-point contrast with the WHATWG URL Standard's inline internationalization handling
+
 ### RFC 2396 (URI Generic Syntax, obsoleted by RFC 3986)
 
 RFC 3986's direct predecessor. Not a WHATWG spec — included for historical context; see [[rfc2396-vs-rfc3986]] for the grammar-level diff against its successor.
