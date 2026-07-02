@@ -1,12 +1,12 @@
 ---
 spec: url
 tags: [interface, algorithm]
-updated: 2026-06-30
+updated: 2026-07-02
 ---
 
 # URL and URLSearchParams API
 
-The JavaScript `URL` and `URLSearchParams` interfaces are the primary way developers interact with URLs in the browser and Node.js.
+The JavaScript `URL` and `URLSearchParams` interfaces are the primary way developers interact with URLs in the browser and Node.js. Specifying and extending this API — including making `URL` constructible without an HTML element, so it works in Worker contexts with no DOM — is one of the URL Standard's explicit [[url-goals|goals]].
 
 ## URL Interface
 
@@ -107,6 +107,7 @@ Sorts pairs by name in **code unit order** (stable sort). Used to canonicalize q
 - [[url-record]]
 - [[url-serialization]]
 - [[url-percent-encoding]]
+- [[url-goals]]
 
 ## Sources
 

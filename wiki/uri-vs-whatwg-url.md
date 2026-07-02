@@ -1,12 +1,12 @@
 ---
 spec: concept
 tags: [concept, parser]
-updated: 2026-07-01
+updated: 2026-07-02
 ---
 
 # RFC 3986 vs. the WHATWG URL Standard
 
-RFC 3986 ("URI Generic Syntax") and the WHATWG URL Standard both define how to parse URLs/URIs, but they take fundamentally different approaches and disagree on several points. The WHATWG URL Standard's introduction explicitly positions itself as a response to RFC 3986's inadequacy for real-world web content.
+RFC 3986 ("URI Generic Syntax") and the WHATWG URL Standard both define how to parse URLs/URIs, but they take fundamentally different approaches and disagree on several points. The WHATWG URL Standard's introduction explicitly positions itself as a response to RFC 3986's inadequacy for real-world web content — see [[url-goals]] for the spec's own stated objectives, which name RFC 3986 (and RFC 3987, IRI) directly as documents it intends to obsolete.
 
 ## Core Philosophical Difference
 
@@ -26,7 +26,8 @@ RFC 3986 ("URI Generic Syntax") and the WHATWG URL Standard both define how to p
 - **Error recovery**: WHATWG's parser is built to never simply reject most malformed real-world input the way a strict ABNF matcher would — it has explicit per-character recovery behavior in every [[url-parser-states|state]]. RFC 3986 offers no equivalent error-recovery model; non-conforming input is simply not a URI.
 - **Dot-segment removal timing**: RFC 3986 removes dot segments as a discrete post-processing algorithm during [[uri-reference-resolution|reference resolution]] (§5.2.4). WHATWG performs the equivalent removal inline, character-by-character, inside the Path state, and additionally recognizes percent-encoded dot segments (`%2e`) that RFC 3986's literal-character grammar does not.
 - **The `http:g` ambiguity**: RFC 3986 (§5.4.2) acknowledges a real ambiguity inherited from RFC 2396 about whether a rootless path beginning with what looks like a scheme name should be treated specially. WHATWG has no such ambiguity — special-scheme URLs are never rootless.
-- **Normalization is optional vs. inherent**: RFC 3986's [[uri-normalization|normalization ladder]] (§6) is something an application opts into when *comparing* URIs. WHATWG performs the syntax/scheme-based-equivalent normalization unconditionally as part of parsing — there's no "unnormalized" WHATWG URL to begin with.
+- **Normalization is optional vs. inherent**: RFC 3986's [[uri-normalization|normalization ladder]] (§6) is something an application opts into when *comparing* URIs. WHATWG performs the syntax/scheme-based-equivalent normalization unconditionally as part of parsing — there's no "unnormalized" WHATWG URL to begin with. This is also what makes WHATWG parsing [[url-idempotence|idempotent]], a guarantee RFC 3986 never makes.
+- **Origin**: RFC 3986 has no concept of origin at all — it belongs to RFC 6454 ("The Web Origin Concept"), a separate document. WHATWG folds origin into its own spec and supersedes RFC 6454 as the definition site; see [[url-concepts]] and [[url-goals]].
 - **IPv4/IPv6 strictness**: RFC 3986's `IPv4address`/`IPv6address` are pure ABNF (any string matching the shape is valid). WHATWG's [[url-ipv4]]/[[url-ipv6]] parsers additionally validate numeric ranges and accept/reject specific legacy notations (octal, hex, mixed) with explicit [[url-validation-errors|validation errors]] — closing the §7.4 ambiguity RFC 3986 itself calls out as a security risk ([[uri-security-considerations]]).
 
 ## What's Preserved
@@ -43,6 +44,8 @@ The five-component model (scheme, authority, path, query, fragment), the `%XX` p
 - [[url-parsing-algorithm]]
 - [[url-record]]
 - [[url-concepts]]
+- [[url-goals]]
+- [[url-idempotence]]
 - [[rfc2396-vs-rfc3986]]
 
 ## Sources

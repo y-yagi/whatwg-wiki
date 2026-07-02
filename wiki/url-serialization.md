@@ -1,7 +1,7 @@
 ---
 spec: url
 tags: [algorithm]
-updated: 2026-06-30
+updated: 2026-07-02
 ---
 
 # URL Serialization
@@ -51,6 +51,7 @@ A URL's **origin** depends on its scheme:
 - [[url-api]]
 - [[uri-reference-resolution]] — RFC 3986 §5.3 component recomposition, this serializer's ancestor
 - [[uri-normalization]]
+- [[url-idempotence]] — the round-trip guarantee this serializer participates in
 
 ## Sources
 

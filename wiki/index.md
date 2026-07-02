@@ -20,6 +20,8 @@
 - [[url-api]] — URL and URLSearchParams JavaScript interfaces, constructor, getters/setters, searchParams sync
 - [[url-concepts]] — special URLs, base URL, opaque origin, Windows drive letters, opaque path, blob URLs
 - [[url-validation-errors]] — full validation error reference, fatal vs. non-fatal distinction
+- [[url-goals]] — the spec's stated objectives: align/obsolete RFC 3986 & 3987, unify URI/IRI/URL/URN terminology, supersede RFC 6454 for origin, extend the JS API
+- [[url-idempotence]] — the parse/serialize round-trip stability guarantee
 
 ## Streams
 
