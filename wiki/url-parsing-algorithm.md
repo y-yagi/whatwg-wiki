@@ -1,7 +1,7 @@
 ---
 spec: url
 tags: [algorithm, parser]
-updated: 2026-07-02
+updated: 2026-07-05
 ---
 
 # URL Parsing Algorithm
@@ -58,6 +58,8 @@ The parser returns **failure** on unrecoverable errors such as:
 
 The "missing scheme when no base is given" condition is precisely the limitation that motivates [[concept-url-531-relative-url-debate|an ongoing community request]] to let the parser (or a sibling API) accept and represent relative-only input with no base at all; see also the commonly-used [[concept-fake-base-url-workaround|fake-base-URL workaround]] for this exact failure.
 
+The [[url-parser-states|hostname state]] override is also the site of a separate spec-authoring gap: [[urlpattern-canonicalization|URLPattern's canonicalization steps]] invoke this parser with a dummy URL record whose "special-ness" the spec didn't clearly define, and whose hostname-state failures weren't reliably reported back to the caller — see [[concept-urlpattern-252-dummy-url-ambiguity]].
+
 ## See Also
 
 - [[url-record]]
@@ -70,6 +72,8 @@ The "missing scheme when no base is given" condition is precisely the limitation
 - [[url-idempotence]] — the parse/serialize round-trip guarantee this algorithm's unconditional normalization exists to satisfy
 - [[concept-url-531-relative-url-debate]]
 - [[concept-fake-base-url-workaround]]
+- [[concept-urlpattern-252-dummy-url-ambiguity]]
+- [[concept-urlpattern-54-canonicalization-origin]]
 
 ## Sources
 

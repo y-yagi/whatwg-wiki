@@ -58,6 +58,8 @@ Accumulate host, forwarded to [[url-host-parsing]]. Differences:
 On `:` (outside brackets) → Port.
 On `/`, `?`, `#`, `\` (special), EOF → set host, validate special URL non-empty host.
 
+Historically, most callers that invoke the basic URL parser with `hostname` as the `stateOverride` ignored this state's return value; `whatwg/url#863` changed the hostname state to report failure in more cases than before, which surfaced a gap in how `URLPattern` builds the dummy URL record it feeds into this state — see [[concept-urlpattern-252-dummy-url-ambiguity]].
+
 ### Port
 Accumulates ASCII digits into `buffer`.
 On EOF, `/`, `?`, `#`, `\` (special): parse integer, fail if > 65535; nullify if equals scheme default.
@@ -105,6 +107,7 @@ Accumulates fragment using **fragment percent-encode set**.
 - [[url-parsing-algorithm]]
 - [[url-host-parsing]]
 - [[url-percent-encoding]]
+- [[concept-urlpattern-252-dummy-url-ambiguity]]
 
 ## Sources
 

@@ -103,6 +103,12 @@ The IETF standard UTS #46 was built to bridge against [[iri-idna|IDNA2003]]. Rep
 - [[idna2008-vs-idna2003]] — blocklist (Nameprep) vs. allowlist (PVALID/CONTEXTJ/CONTEXTO/DISALLOWED) shift, the ß/ς divergence
 - [[idna2008-security-considerations]] — §4: U-label length risks, local charset ambiguity, confusable characters, unassigned-code-point tradeoff
 
+### RFC 6454 (The Web Origin Concept)
+
+The IETF standard that first formally defined **origin**. Not a WHATWG spec — the URL Standard names superseding it as one of its four stated goals; see [[url-goals]].
+
+- [[rfc6454-overview]] — origin computation, same-origin comparison, ASCII serialization, the `Origin` header, and contrast with [[url-concepts|WHATWG's native origin definitions]]
+
 ### RFC 2396 (URI Generic Syntax, obsoleted by RFC 3986)
 
 RFC 3986's direct predecessor. Not a WHATWG spec — included for historical context; see [[rfc2396-vs-rfc3986]] for the grammar-level diff against its successor.
@@ -127,3 +133,5 @@ Not spec text — discussions on WHATWG's own issue trackers about gaps between 
 - [[concept-uri-reference-vs-whatwg-url]] — the `URIReference`-vs-`URL` type-design disagreement (alwinb vs. karwa) underlying the debate
 - [[concept-relative-url-api-proposals]] — catalog of proposed API shapes (`RelativeURL`, `URLPathAndHash`, `URIReference`, etc.) and independent reference implementations
 - [[concept-http-origin-form-vs-relative-reference]] — why HTTP origin-form request-targets (`/foo?bar`) are not RFC 3986 relative references, despite looking identical
+- [[concept-urlpattern-252-dummy-url-ambiguity]] — `whatwg/urlpattern#252`: the dummy-URL special-ness gap in canonicalization, annevk's fix across url#863 and urlpattern#255, still open
+- [[concept-urlpattern-54-canonicalization-origin]] — `whatwg/urlpattern#54`: wanderview's original 2021 implementation of the canonicalize protocol/username/password/hostname/port/pathname/search/hash algorithms, replacing spec TODOs

@@ -40,6 +40,7 @@ Logical (storage) order: `http://ab.CDEFGH.ij/kl/mn/op.html` (uppercase = RTL ch
 - [[iri-security-considerations]]
 - [[uri-to-iri-mapping]]
 - [[iri-to-uri-mapping]]
+- [[idna-validity-criteria]] — RFC 5893's IDNA-specific bidi validity conditions, built on the general bidi-in-identifiers problem described here
 
 ## Sources
 

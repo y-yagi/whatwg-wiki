@@ -1,7 +1,7 @@
 ---
 spec: concept
 tags: [concept, algorithm]
-updated: 2026-07-04
+updated: 2026-07-05
 ---
 
 # URLPattern Canonicalization
@@ -10,12 +10,14 @@ Before a component's pattern text is tokenized ([[urlpattern-syntax]]), the *lit
 
 ## Per-Component Encoding Callbacks
 
-- **protocol** — lowercased and validated as a URL scheme, reusing the URL Standard's scheme validity rules.
-- **username / password** — percent-encoded against the URL Standard's userinfo percent-encode set (see [[url-percent-encoding]]).
-- **hostname** — run through [[url-host-parsing|domain-to-ASCII]] processing: lowercased, Punycode/IDNA-encoded. A bracketed IPv6 literal is preserved as opaque bracket text rather than being domain-processed.
-- **port** — validated as numeric; if it equals the default port for the pattern's protocol (e.g. `443` for `https`), it is normalized away the same way [[url-serialization|URL serialization]] omits default ports.
-- **pathname** — percent-encoded against the appropriate path percent-encode set; for special-scheme URLs, backslashes are treated as `/` and multiple/leading slash forms are normalized the way the URL Standard's path state does.
-- **search / hash** — percent-encoded against the URL Standard's query/fragment percent-encode sets (see [[url-percent-encoding]]).
+- **protocol** — a single trailing `:` is stripped, then the result is parsed by appending `"://dummy.test"` and running it through the *ordinary* URL-parsing entry point (not a state override) so that special-scheme recognition, which needs an authority-shaped input, works correctly; the canonicalized value is the resulting URL record's scheme.
+- **username / password** — percent-encoded against the URL Standard's userinfo percent-encode set (see [[url-percent-encoding]]), by calling *set the username*/*set the password* directly on a fresh dummy URL record (no parser reentry needed).
+- **hostname** — run through [[url-host-parsing|domain-to-ASCII]] processing: lowercased, Punycode/IDNA-encoded. A bracketed IPv6 literal is preserved as opaque bracket text rather than being domain-processed. This step and its siblings (port/pathname/search/hash canonicalization) work by feeding a dummy URL record into a URL Standard algorithm; how that dummy record is built — critically, whether it counts as a *special* URL — was left ambiguous by the spec text; this is an open spec gap, partially addressed at the URL Standard layer (`whatwg/url#863` merged) but not yet finalized on the URLPattern side (`whatwg/urlpattern#255` was closed unmerged) — see [[concept-urlpattern-252-dummy-url-ambiguity]].
+- **port** — takes the already-canonicalized `protocol` value as an input alongside the port string, and sets it as the dummy URL record's scheme *before* running the `port state` override, so the parser can recognize and normalize away the protocol's default port (e.g. `443` for `https`) the same way [[url-serialization|URL serialization]] omits default ports.
+- **pathname** — likewise takes the canonicalized `protocol` value (defaulting to `"https"` if the pattern has none), sets it on the dummy URL record, and branches on whether that makes the URL [[url-concepts|special]]: special URLs go through `path start state` (backslashes treated as `/`, multiple/leading slash forms normalized); non-special URLs go through `cannot-be-a-base-URL path state` instead, percent-encoded against the appropriate path percent-encode set either way.
+- **search / hash** — a single leading `?`/`#` is stripped, then the remainder is percent-encoded against the URL Standard's query/fragment percent-encode sets (see [[url-percent-encoding]]) by running `query state`/`fragment state` override on a dummy URL record whose query/fragment field was pre-set to the empty string.
+
+These per-component algorithms — and the "feed a dummy URL record into a state override" pattern generally — originate in [[concept-urlpattern-54-canonicalization-origin|whatwg/urlpattern#54]], which replaced the original spec's `TODO` placeholders with the current design.
 
 ## Why Reuse the URL Standard's Rules
 
@@ -32,6 +34,9 @@ Canonicalization only applies to **literal** pattern text. A custom `(regex)` gr
 - [[url-percent-encoding]]
 - [[url-host-parsing]]
 - [[url-serialization]]
+- [[url-ipv6]]
+- [[concept-urlpattern-252-dummy-url-ambiguity]]
+- [[concept-urlpattern-54-canonicalization-origin]]
 
 ## Sources
 

@@ -58,6 +58,7 @@ For non-special URLs (`isOpaque = true`):
 - [[idna-validity-criteria]]
 - [[idna-transitional-processing]]
 - [[urlpattern-canonicalization]] — `URLPattern` hostname canonicalization delegates to this same domain-to-ASCII processing
+- [[concept-urlpattern-252-dummy-url-ambiguity]] — a caller reusing this parser with an undefined "special-ness" dummy record, exposing ambiguity in the domain-vs-opaque routing here
 
 ## Sources
 

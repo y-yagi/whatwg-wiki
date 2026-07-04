@@ -42,6 +42,8 @@ A URL's **origin** depends on its scheme:
 - `file:` → opaque origin (implementation-defined).
 - Everything else → opaque origin.
 
+See [[url-concepts|Opaque Origins vs. Tuple Origins]] for the full definitions; this standard's origin model supersedes [[rfc6454-overview|RFC 6454]].
+
 **Origin serialization**: `scheme + "://" + host + (port ? ":" + port : "")`.
 
 ## See Also
@@ -49,6 +51,8 @@ A URL's **origin** depends on its scheme:
 - [[url-record]]
 - [[url-host-parsing]]
 - [[url-api]]
+- [[url-concepts]] — the full opaque/tuple origin definitions this page's "Origin and Serialization" section summarizes
+- [[rfc6454-overview]] — the origin model this standard supersedes
 - [[uri-reference-resolution]] — RFC 3986 §5.3 component recomposition, this serializer's ancestor
 - [[uri-normalization]]
 - [[url-idempotence]] — the round-trip guarantee this serializer participates in

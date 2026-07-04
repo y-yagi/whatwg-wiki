@@ -31,7 +31,7 @@ The browser's base URL for a document comes from the `<base href>` element or th
 - **Tuple origin**: `(scheme, host, port, null)` — for http/https/ftp/ws/wss URLs. Two URLs have the same origin if all four components match.
 - **Opaque origin**: an internal value, unique and never equal to anything else. Used by `file:` URLs and non-special non-blob URLs.
 
-Defining origin is one of the URL Standard's explicit [[url-goals|goals]]: it supersedes RFC 6454 ("The Web Origin Concept") rather than deferring to it as a separate document.
+Defining origin is one of the URL Standard's explicit [[url-goals|goals]]: it supersedes [[rfc6454-overview|RFC 6454 ("The Web Origin Concept")]] rather than deferring to it as a separate document.
 
 ## Windows Drive Letters
 
@@ -76,6 +76,7 @@ Validation errors are non-fatal warnings emitted during parsing for inputs that 
 - [[url-validation-errors]] — full reference table of every named validation error
 - [[uri-vs-whatwg-url]] — special schemes, base URLs, and equivalence contrasted against RFC 3986
 - [[url-goals]] — origin, terminology, and idempotence as stated spec objectives
+- [[rfc6454-overview]] — the IETF document this page's origin definitions supersede
 
 ## Sources
 

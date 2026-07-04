@@ -36,7 +36,7 @@ See [[uri-host]] for the full grammar of each alternative.
 port = *DIGIT
 ```
 
-A decimal number; absence means "use the scheme's default port," not port 0.
+A decimal number; absence means "use the scheme's default port," not port 0 — see [[url-record]] for the WHATWG URL Standard's default-port table.
 
 ## Comparison with WHATWG
 
@@ -48,6 +48,7 @@ The WHATWG URL Standard's [[url-parser-states|Authority state]] parses the same 
 - [[uri-host]]
 - [[uri-reserved-characters]]
 - [[url-parser-states]]
+- [[url-record]]
 - [[uri-vs-whatwg-url]]
 - [[rfc2396-scheme-authority]]
 

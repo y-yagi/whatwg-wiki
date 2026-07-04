@@ -14,7 +14,7 @@ Names are trust anchors users rely on to reach the right server; the core risk n
 
 ## §4.2 U-label Lengths
 
-U-labels (see [[idna2008-labels]]) can run up to roughly 252 characters — far beyond typical assumptions baked into older code — creating **buffer overflow and truncation** risk for application authors who don't account for it.
+U-labels (see [[idna2008-labels]]) can run up to roughly 252 characters — far beyond typical assumptions baked into older code — creating **buffer overflow and truncation** risk for application authors who don't account for it. This is a distinct figure from the 253-character whole-name / 63-character per-label DNS-wire limits that [[idna-toascii-tounicode|ToASCII's `VerifyDnsLength` step]] enforces on the ASCII/Punycode form: the ~252 count here is the pre-conversion Unicode U-label length, not the post-conversion A-label/DNS length.
 
 ## §4.3 Local Character Set Issues
 
@@ -41,6 +41,7 @@ The section closes with a blunt caveat that generalizes beyond IDNA: **"No mecha
 - [[idna2008-overview]]
 - [[idna2008-vs-idna2003]]
 - [[idna2008-labels]]
+- [[idna-toascii-tounicode]] — the ASCII/Punycode-side DNS length enforcement (253/63 chars) that §4.2's Unicode U-label length figure (~252 chars) is distinct from
 - [[idna-registry-security]] — UTS #46's parallel bundling/CONTEXTJ mitigations
 - [[iri-security-considerations]] — RFC 3987's IRI-level treatment of the same homograph/spoofing space
 
