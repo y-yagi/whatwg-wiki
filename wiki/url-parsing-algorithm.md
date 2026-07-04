@@ -64,6 +64,7 @@ The "missing scheme when no base is given" condition is precisely the limitation
 - [[url-parser-states]]
 - [[url-host-parsing]]
 - [[url-percent-encoding]]
+- [[urlpattern-base-url]] — how `URLPattern` reuses this parser's relative-resolution mechanics for pattern strings
 - [[uri-reference-resolution]] — RFC 3986's relative-reference resolution algorithm, this parser's conceptual ancestor
 - [[uri-vs-whatwg-url]]
 - [[url-idempotence]] — the parse/serialize round-trip guarantee this algorithm's unconditional normalization exists to satisfy

@@ -57,6 +57,7 @@ For non-special URLs (`isOpaque = true`):
 - [[idna-toascii-tounicode]]
 - [[idna-validity-criteria]]
 - [[idna-transitional-processing]]
+- [[urlpattern-canonicalization]] — `URLPattern` hostname canonicalization delegates to this same domain-to-ASCII processing
 
 ## Sources
 

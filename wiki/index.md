@@ -33,6 +33,22 @@
 
 ## Cross-Spec Concepts
 
+### URLPattern Standard (urlpattern.spec.whatwg.org)
+
+A separate WHATWG living standard, not one of the seven core specs tracked in this wiki, but built directly on the URL Standard: its canonicalization step reuses [[url-percent-encoding|percent-encoding]] and [[url-host-parsing|host parsing]] from [[url-parsing-algorithm]]. Filed here (`spec: concept`) rather than under URL because it's a distinct spec document with its own interface, not part of url.spec.whatwg.org itself.
+
+- [[urlpattern-overview]] — purpose, relation to the URL Standard, map of the other URLPattern pages
+- [[urlpattern-syntax]] — pattern language: wildcards, named groups, regex groups, modifiers, `{ }` grouping, escaping, tokenizing policies
+- [[urlpattern-init]] — `URLPatternInit`/`URLPatternOptions` dictionaries, defaulting and cascading rules
+- [[urlpattern-constructor]] — the two constructor overloads, constructor-string parsing, construction-time regex compilation
+- [[urlpattern-components]] — per-component delimiter/prefix code points and how they shape matching
+- [[urlpattern-canonicalization]] — per-component encoding callbacks, shared with the URL Standard's own parser
+- [[urlpattern-exec-test]] — `test()`/`exec()`, `URLPatternResult`, `URLPatternComponentResult`
+- [[urlpattern-base-url]] — resolving relative pattern strings and inheriting components from a base URL
+- [[urlpattern-regexp-groups]] — custom `(regex)` groups, `hasRegExpGroups`, ReDoS considerations
+- [[urlpattern-examples]] — worked examples from the spec
+- [[urlpattern-vs-url-api]] — contrast with the [[url-api|`URL`/`URLSearchParams` API]]
+
 ### RFC 3986 (URI Generic Syntax)
 
 The IETF predecessor/foundation underlying the WHATWG URL Standard. Not a WHATWG spec — included for historical context and comparison.

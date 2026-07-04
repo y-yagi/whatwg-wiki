@@ -50,6 +50,7 @@ Used by `URLSearchParams` serialization:
 
 - [[url-parsing-algorithm]]
 - [[url-api]]
+- [[urlpattern-canonicalization]] — `URLPattern` reuses these percent-encode sets as encoding callbacks for literal pattern text
 - [[uri-reserved-characters]] — RFC 3986's reserved/unreserved split that this hierarchy refines
 
 ## Sources

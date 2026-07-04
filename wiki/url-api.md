@@ -108,6 +108,7 @@ Sorts pairs by name in **code unit order** (stable sort). Used to canonicalize q
 - [[url-serialization]]
 - [[url-percent-encoding]]
 - [[url-goals]]
+- [[urlpattern-vs-url-api]] — how `URLPattern` (match many URLs against a template) differs in purpose from this parse-one-URL API
 
 ## Sources
 
