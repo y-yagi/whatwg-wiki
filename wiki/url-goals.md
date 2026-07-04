@@ -23,9 +23,14 @@ A goal not listed as a numbered bullet but stated as a hard requirement: parsing
 
 Every one of these goals is a reaction to the RFCs' declarative-grammar approach failing to describe what browsers actually had to do with malformed, real-world URLs already on the web — the same motivation documented component-by-component in [[uri-vs-whatwg-url]]. The goals section is the spec's own justification for existing as a competitor to, rather than a profile of, RFC 3986/3987/6454.
 
+## Tension: Goal 2 in Practice
+
+Goal 2's terminology collapse (everything is a URL, and a URL is absolute) is also the root of an unresolved five-year community debate — [whatwg/url#531](https://github.com/whatwg/url/issues/531) — over whether the standard should support relative references as a first-class, non-absolute value at all. See [[concept-url-531-relative-url-debate]] for the discussion and [[concept-uri-reference-vs-whatwg-url]] for how it maps back onto RFC 3986's `URI-reference` concept that this goal explicitly set out to retire.
+
 ## See Also
 
 - [[uri-vs-whatwg-url]] — concrete, mechanical diff implementing these goals
+- [[concept-url-531-relative-url-debate]] — ongoing pushback against the absolute-only consequence of goal 2
 - [[iri-vs-whatwg-url]] — the same diff for RFC 3987's internationalization scope
 - [[uri-terminology]] — the URI/URL/URN split this standard collapses
 - [[url-concepts]] — origin, the concept this standard took over from RFC 6454

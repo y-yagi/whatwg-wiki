@@ -83,6 +83,8 @@ Pseudocode reassembling `T.scheme`, `T.authority`, `T.path`, `T.query`, `T.fragm
 
 The WHATWG URL Standard's "parse relative" / [[url-parsing-algorithm|basic URL parser with a base]] is a direct, more deterministic descendant of this algorithm: instead of branching on which components are "defined" in the abstract, it runs a single state machine over the input code points, copying fields from the base URL when the input doesn't override them (mirroring §5.2.2's branches almost one-to-one for the "no scheme" cases). Crucially, WHATWG resolves RFC 3986's `http:g` ambiguity by specification — special-scheme URLs never fall into the rootless/opaque-path branch.
 
+One structural gap remains, though: RFC 3986 gives relative references a name and a grammar of their own (`relative-ref`, a full **URI reference** in §4.1), so a relative reference can exist and be manipulated as data independent of any base. WHATWG has no equivalent — a "relative URL" is only ever an intermediate input string the parser consumes, never a value the `URL` API can hold or produce. This gap is the subject of an ongoing five-year community debate; see [[concept-url-531-relative-url-debate]] and [[concept-uri-reference-vs-whatwg-url]].
+
 ## See Also
 
 - [[uri-generic-syntax]]

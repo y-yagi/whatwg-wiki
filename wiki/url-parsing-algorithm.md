@@ -56,6 +56,8 @@ The parser returns **failure** on unrecoverable errors such as:
 - Invalid port number (non-16-bit integer, port > 65535)
 - Host parsing failure for the host component
 
+The "missing scheme when no base is given" condition is precisely the limitation that motivates [[concept-url-531-relative-url-debate|an ongoing community request]] to let the parser (or a sibling API) accept and represent relative-only input with no base at all; see also the commonly-used [[concept-fake-base-url-workaround|fake-base-URL workaround]] for this exact failure.
+
 ## See Also
 
 - [[url-record]]
@@ -65,6 +67,8 @@ The parser returns **failure** on unrecoverable errors such as:
 - [[uri-reference-resolution]] — RFC 3986's relative-reference resolution algorithm, this parser's conceptual ancestor
 - [[uri-vs-whatwg-url]]
 - [[url-idempotence]] — the parse/serialize round-trip guarantee this algorithm's unconditional normalization exists to satisfy
+- [[concept-url-531-relative-url-debate]]
+- [[concept-fake-base-url-workaround]]
 
 ## Sources
 

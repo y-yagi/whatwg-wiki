@@ -101,3 +101,13 @@ RFC 3986's direct predecessor. Not a WHATWG spec — included for historical con
 - [[rfc2396-reference-resolution]] — relative resolution algorithm, worked examples, the `http:g` loophole
 - [[rfc2396-security-considerations]] — port-confusion attacks, escaped-delimiter injection, userinfo passwords
 - [[rfc2396-vs-rfc3986]] — full point-by-point diff: grammar notation, character classes, authority/host, path, terminology
+
+### Community Design Debates
+
+Not spec text — discussions on WHATWG's own issue trackers about gaps between the shipped standard and real-world demands. Included where they clarify *why* the spec is shaped the way it is.
+
+- [[concept-url-531-relative-url-debate]] — `whatwg/url#531`: five-year debate over whether `URL` should support relative references; positions by role (MEMBER/COLLABORATOR/CONTRIBUTOR), why it's stalled
+- [[concept-fake-base-url-workaround]] — the `new URL(input, 'https://fake-host')` pattern, its variants, and where it silently loses information
+- [[concept-uri-reference-vs-whatwg-url]] — the `URIReference`-vs-`URL` type-design disagreement (alwinb vs. karwa) underlying the debate
+- [[concept-relative-url-api-proposals]] — catalog of proposed API shapes (`RelativeURL`, `URLPathAndHash`, `URIReference`, etc.) and independent reference implementations
+- [[concept-http-origin-form-vs-relative-reference]] — why HTTP origin-form request-targets (`/foo?bar`) are not RFC 3986 relative references, despite looking identical
