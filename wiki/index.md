@@ -109,6 +109,13 @@ The IETF standard that first formally defined **origin**. Not a WHATWG spec — 
 
 - [[rfc6454-overview]] — origin computation, same-origin comparison, ASCII serialization, the `Origin` header, and contrast with [[url-concepts|WHATWG's native origin definitions]]
 
+### RFC 2606 (Reserved Top Level DNS Names)
+
+A short IETF BCP reserving `.test`/`.example`/`.invalid`/`.localhost` and `example.com`/`.net`/`.org` for documentation and testing. Not a WHATWG spec, but its `.localhost` reservation is the historical basis for [[url-host|the URL Standard's own `"localhost"` special case in `file:` URLs]].
+
+- [[rfc2606-overview]] — the four reserved TLDs, three reserved SLDs, rationale, and its update by RFC 6761
+- [[concept-reserved-example-domains]] — where these reservations do (and don't) get spec-normative treatment across HTML/Fetch/URL
+
 ### RFC 2396 (URI Generic Syntax, obsoleted by RFC 3986)
 
 RFC 3986's direct predecessor. Not a WHATWG spec — included for historical context; see [[rfc2396-vs-rfc3986]] for the grammar-level diff against its successor.

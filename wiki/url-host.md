@@ -34,7 +34,7 @@ A forbidden domain code point is a forbidden host code point, a C0 control, `U+0
 
 ## Localhost
 
-The string `"localhost"` has special treatment in `file:` URLs — the file host state sets it to an empty host rather than keeping it as a domain.
+The string `"localhost"` has special treatment in `file:` URLs — the file host state sets it to an empty host rather than keeping it as a domain. This narrowly echoes [[rfc2606-overview|RFC 2606]]'s reservation of the `.localhost` TLD for the pre-existing loopback-address convention; see [[concept-reserved-example-domains]] for how RFC 2606's other reserved names (`.test`, `.example`, `.invalid`) relate to (or don't get) any spec-level special-casing.
 
 ## See Also
 
@@ -44,6 +44,8 @@ The string `"localhost"` has special treatment in `file:` URLs — the file host
 - [[url-record]]
 - [[uri-host]] — RFC 3986's `reg-name`/`IPv4address`/`IP-literal` predecessor grammar
 - [[uri-vs-whatwg-url]]
+- [[rfc2606-overview]] — reserved `.localhost`/`.test`/`.example`/`.invalid` TLDs
+- [[concept-reserved-example-domains]] — how those reservations map onto WHATWG spec behavior
 
 ## Sources
 
