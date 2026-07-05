@@ -19,6 +19,15 @@ Before a component's pattern text is tokenized ([[urlpattern-syntax]]), the *lit
 
 These per-component algorithms — and the "feed a dummy URL record into a state override" pattern generally — originate in [[concept-urlpattern-54-canonicalization-origin|whatwg/urlpattern#54]], which replaced the original spec's `TODO` placeholders with the current design.
 
+## "Dummy URL" Is Defined By URLPattern, Not the URL Standard
+
+The current spec text (§1.5 "Internals") formalizes **create a dummy URL** as its own algorithm, native to the URLPattern Standard:
+
+1. Let `dummyInput` be `"https://dummy.invalid/"`.
+2. Return the result of running the [[url-parsing-algorithm|basic URL parser]] on `dummyInput`.
+
+The URL Standard itself never uses the term "dummy URL" and defines no such concept — it only supplies the generic machinery (the basic URL parser, and its per-component `stateOverride` entry points) that URLPattern's algorithm happens to call. The placeholder host in the current spec text is `dummy.invalid` (an [RFC 2606](https://www.rfc-editor.org/rfc/rfc2606.html)-reserved TLD, like the `dummy.test` used in the original 2021 implementation PR [[concept-urlpattern-54-canonicalization-origin|#54]] before the spec text settled on `.invalid`) — the exact literal is arbitrary and unobservable to authors; only its syntactic validity as a special-URL authority matters.
+
 ## Why Reuse the URL Standard's Rules
 
 `URLPattern` is explicitly designed so that a pattern's literal text canonicalizes the same way the equivalent literal `URL` component would. Without this, `new URLPattern({ hostname: "ex ample.com" })` (containing a space) could canonicalize differently than `new URL("https://ex ample.com")`, and a pattern that looks like it should match a given URL might silently fail to, because the pattern's stored form and the URL's parsed form diverged. Sharing the encoding callbacks with [[url-parsing-algorithm]] is what keeps the two in lockstep.
