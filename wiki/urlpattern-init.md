@@ -38,13 +38,17 @@ dictionary URLPatternOptions {
 
 ## "Process a URLPatternInit" — Defaulting Rules
 
-When a `URLPatternInit` is processed (whether passed directly to the constructor, or produced by parsing a constructor string):
+When a `URLPatternInit` is processed (whether passed directly to the constructor, or produced by parsing a constructor string), the algorithm takes a **type** of `"pattern"` (constructing a `URLPattern`) or `"url"` (matching a concrete URL against an already-built pattern, e.g. the second argument to `test()`/`exec()`) — several of the baseURL-inheritance rules below depend on which:
 
-1. If **`baseURL`** is present, it is parsed as a URL first, and its `protocol`, `username`, `password`, `hostname`, and `port` are used to fill in any of those components *not* explicitly given in the init — rather than defaulting those components to `*`.
-2. **`pathname`/`search`/`hash` cascade**: if `pathname` is unspecified but `search` or `hash` is given, `pathname` is filled from the base URL (or defaults per [[urlpattern-components]]) rather than wildcarded — the intent being that specifying only a later component shouldn't silently wildcard-match every path. Likewise, if `search` is unspecified but `hash` is given, `search` defaults to the empty string rather than `*`.
-3. Any component still unspecified after the above falls back to the full wildcard `*`.
+1. If **`baseURL`** is present, it is parsed as a URL first, and used to fill in components *not* explicitly given in the init, but each component only inherits if `init` also lacks every component *more specific* than it (the two orderings the spec uses are `protocol, hostname, port, pathname, search, hash` and `protocol, hostname, port, username, password`):
+   - `protocol` inherits from `baseURL` if `init` has no `protocol`.
+   - `hostname` inherits if `init` has neither `protocol` nor `hostname`.
+   - `port` inherits (or becomes the empty string if `baseURL` has no port) if `init` has none of `protocol`, `hostname`, `port`.
+   - **`username`/`password` are never inherited from `baseURL` when constructing a `URLPattern` (type `"pattern"`)** — full stop, regardless of what else is unspecified. They *are* inherited from `baseURL` when type is `"url"`, i.e. when resolving a concrete URL to match against a pattern, and even then only if `init` has none of `protocol`/`hostname`/`port`/`username` (for username) or none of those plus `username` (for password).
+2. **`pathname`/`search`/`hash` cascade**: `pathname` inherits from `baseURL` only if `init` has none of `protocol`, `hostname`, `port`, `pathname`. `search` inherits only if none of those plus `pathname` are given. `hash` inherits only if none of those plus `search` are given. The intent is that specifying only a later component shouldn't silently wildcard-match every earlier one.
+3. Any component still unspecified after the above stays absent from the processed init at this stage — see the `URLPattern` `create` algorithm's own separate step for defaulting absent components to the full wildcard `*` (and its special-cased default-port collapse), described in [[urlpattern-components|the port component notes]].
 
-This is why `new URLPattern({ pathname: "/foo" })` matches any protocol/hostname/port but a specific path, while `new URLPattern({ hostname: "example.com" })` (no `baseURL`, no `pathname`) still ends up with a `pathname` pattern of `*`, not empty.
+This is why `new URLPattern({ pathname: "/foo" })` matches any protocol/hostname/port but a specific path, while `new URLPattern({ hostname: "example.com" })` (no `baseURL`, no `pathname`) still ends up with a `pathname` pattern of `*`, not empty — and why `new URLPattern({ hostname: "example.com", baseURL: "https://user:pw@example.org/" })` never picks up `user`/`pw`, even though it would happily inherit `port` from the same `baseURL` if unset.
 
 ## See Also
 

@@ -20,7 +20,7 @@ The three-layer algorithm that turns an HTTP(S) request into bytes on the wire (
 
 Mediates between the HTTP cache and the network per `request.cache` (see [[fetch-cache-mode]]):
 
-1. If cache mode is `"only-if-cached"` and there's no cache match, return a network error.
+1. If cache mode is `"only-if-cached"` and `request.mode` isn't `"same-origin"`, return a network error (this combination is only valid for same-origin requests; see [[fetch-cache-mode]]). If cache mode is `"only-if-cached"` and there's no cache match, also return a network error.
 2. If cache mode is `"no-store"`, skip cache reads/writes entirely and go straight to network.
 3. Look up a matching cached response.
 4. If fresh and mode isn't `"no-cache"`/`"reload"`, return the cached response directly (no network round-trip).
@@ -40,7 +40,7 @@ The actual wire-level exchange:
 5. Transmit to the server.
 6. As the response arrives, if status is `103 Early Hints`, invoke `processEarlyHints` and keep reading for the final response.
 7. Populate the response's header list, status, and body stream as bytes arrive; update timing-info markers used by the Resource Timing API.
-8. If `request.integrity` is non-empty, [[fetch-integrity|verify the response body hash]] once the body is fully read, and replace the response with a network error on mismatch.
+8. If `request.integrity` is non-empty, [[fetch-integrity|verify the response body hash]] once the body is fully read, and replace the response with a [[fetch-network-error|network error]] on mismatch.
 
 ## See Also
 
@@ -51,6 +51,7 @@ The actual wire-level exchange:
 - [[fetch-credentials-mode]]
 - [[fetch-integrity]]
 - [[fetch-headers]]
+- [[fetch-network-error]]
 
 ## Sources
 

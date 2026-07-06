@@ -41,11 +41,30 @@ Produces the **compressed** canonical form:
 
 Example: `[0,0,0,0,0,0xffff,0xc000,0x0201]` → `[::ffff:c000:201]`
 
+## Validation Errors
+
+| Error | Cause | Fatal? |
+|-------|-------|--------|
+| `IPv6-unclosed` | Missing the closing `]` | Yes |
+| `IPv6-invalid-compression` | Address begins with improper compression | Yes |
+| `IPv6-too-many-pieces` | More than 8 pieces | Yes |
+| `IPv6-multiple-compression` | Compressed (`::`) in more than one spot | Yes |
+| `IPv6-invalid-code-point` | A code point that's neither an ASCII hex digit nor `:`, or the address unexpectedly ends | Yes |
+| `IPv6-too-few-pieces` | An uncompressed address has fewer than 8 pieces | Yes |
+| `IPv6-piece-leading-zero` | A piece has a leading `0` (e.g., `0042` instead of `42`) | No |
+| `IPv4-in-IPv6-too-many-pieces` | Mixed-notation address has more than 6 pieces before the embedded IPv4 part | Yes |
+| `IPv4-in-IPv6-invalid-code-point` | Embedded IPv4 part is empty, non-digit, has a leading zero, or has too many dot-separated parts | Yes |
+| `IPv4-in-IPv6-out-of-range-part` | Embedded IPv4 part exceeds 255 | Yes |
+| `IPv4-in-IPv6-too-few-parts` | Embedded IPv4 part has fewer than 4 dot-separated parts | Yes |
+
+Every IPv6 validation error is fatal (returns parser failure) except `IPv6-piece-leading-zero`. See [[url-validation-errors]] for the full cross-spec reference table.
+
 ## See Also
 
 - [[url-host]]
 - [[url-host-parsing]]
 - [[url-ipv4]]
+- [[url-validation-errors]]
 
 ## Sources
 

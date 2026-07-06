@@ -11,12 +11,12 @@ Handles HTTP redirect responses (status `301`, `302`, `303`, `307`, `308`) retur
 ## Steps
 
 1. Extract the `Location` header from the response; if absent, return the response as-is (not treated as a redirect).
-2. Parse `Location` relative to the response's URL. If parsing fails, return a network error. (Fragment-only Location values resolve relative to the request's current URL, not stripped.)
+2. [[url-parsing-algorithm|Parse]] `Location` relative to the response's URL. If parsing fails, return a [[fetch-network-error|network error]]. (Fragment-only Location values resolve relative to the request's current URL, not stripped.)
 3. If `request.redirectMode` is `"error"`, return a network error immediately.
 4. If `request.redirectMode` is `"manual"`, return an **opaque-redirect filtered response** without following it — the caller (e.g. a service worker) must decide.
 5. Check the redirect count: if `request.redirectCount` ≥ 20, return a network error (loop protection).
 6. Increment `request.redirectCount`.
-7. If the new URL's scheme is not an HTTP(S) scheme and this isn't a same-origin-safe case, return a network error.
+7. If the new URL's scheme is not an HTTP(S) scheme, return a network error (unconditional — there is no same-origin exception).
 8. Method/body rewriting:
    - **303 See Other**: always rewrite method to `GET` and clear the body, regardless of original method.
    - **301/302** from an original method of `POST`: rewrite to `GET`, clear body (legacy user-agent behavior, not in the original HTTP spec but required for web compatibility).
@@ -37,6 +37,8 @@ Handles HTTP redirect responses (status `301`, `302`, `303`, `307`, `308`) retur
 - [[fetch-request-response]]
 - [[fetch-cors]]
 - [[fetch-security-considerations]]
+- [[fetch-network-error]]
+- [[url-parsing-algorithm]]
 
 ## Sources
 

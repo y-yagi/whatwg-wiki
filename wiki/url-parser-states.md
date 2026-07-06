@@ -10,6 +10,9 @@ The [[url-parsing-algorithm]] is a state machine with the following named states
 
 ## Scheme States
 
+### Scheme Start
+Entry state for every parse. If `c` is ASCII alpha → lowercase it into `buffer`, state = Scheme. Otherwise, if no `stateOverride` → state = No Scheme, rewind pointer by 1 (so No Scheme re-reads `c`). If a `stateOverride` **is** given (i.e. this is a `URL.protocol` setter call, not a fresh parse) → return failure instead of falling through.
+
 ### No Scheme
 If `c` is ASCII alpha and base exists with an opaque path → failure.
 Otherwise, if base scheme is `file` → file state; if base is non-null → relative state; else → failure.
@@ -107,6 +110,8 @@ Accumulates fragment using **fragment percent-encode set**.
 - [[url-parsing-algorithm]]
 - [[url-host-parsing]]
 - [[url-percent-encoding]]
+- [[url-concepts]] — Windows drive letters and opaque paths, produced by the File/Opaque Path states above
+- [[url-record]] — the fields (host, path, port, etc.) these states populate
 - [[concept-urlpattern-252-dummy-url-ambiguity]]
 
 ## Sources

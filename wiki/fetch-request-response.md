@@ -31,11 +31,11 @@ new Response(body, init)
 - `init` (`ResponseInit`): `status` (200–599 by default constructor constraints, though internal responses can be 0–999), `statusText`, `headers`.
 
 Static constructors:
-- `Response.error()` — a **network error** response (`type: "error"`, status `0`, no headers/body).
+- `Response.error()` — a [[fetch-network-error|network error]] response (`type: "error"`, status `0`, no headers/body).
 - `Response.redirect(url, status)` — a redirect response with `Location` set; `status` must be one of 301/302/303/307/308.
 - `Response.json(data, init)` — serializes `data` via `JSON.stringify` and sets `Content-Type: application/json`.
 
-Read-only properties: `status`, `statusText`, `headers` (`"response"` guard), `ok` (true iff status 200–299), `type` (`"basic"`/`"cors"`/`"default"`/`"error"`/`"opaque"`/`"opaqueredirect"`), `url` (last entry of the internal URL list, empty string if the list is empty), `redirected` (true iff the URL list has more than one entry), `body`.
+Read-only properties: `status`, `statusText`, `headers` (`"response"` guard), `ok` (true iff status 200–299), `type` (`"basic"`/[[fetch-cors|`"cors"`]]/`"default"`/`"error"`/[[fetch-cors|`"opaque"`]]/[[fetch-redirect|`"opaqueredirect"`]]), `url` (last entry of the internal URL list, empty string if the list is empty), `redirected` (true iff the URL list has more than one entry), `body`.
 
 `clone()` behaves like `Request.clone()`; throws on a disturbed/locked body.
 
@@ -55,6 +55,7 @@ Both interfaces mix in the shared [[fetch-body|Body]] interface (`body`, `bodyUs
 - [[fetch-abort]]
 - [[fetch-algorithm]]
 - [[fetch-redirect]]
+- [[fetch-network-error]]
 
 ## Sources
 

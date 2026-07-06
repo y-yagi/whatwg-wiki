@@ -18,6 +18,7 @@
 - [[fetch-cache-mode]] — cache modes (default/no-store/reload/no-cache/force-cache/only-if-cached), freshness/validation
 - [[fetch-credentials-mode]] — credentials modes (omit/same-origin/include) and request modes (same-origin/cors/no-cors/navigate)
 - [[fetch-abort]] — fetch controller, AbortController/AbortSignal integration, cancellation checks
+- [[fetch-network-error]] — the undifferentiated `type: "error"` response every failure mode collapses to, and why that's a deliberate anti-fingerprinting property
 - [[fetch-security-considerations]] — cross-cutting security summary: opaque responses, CORS opt-in, forbidden headers, referrer leakage, credentials, integrity, timing, redirects
 
 ## URL
@@ -154,5 +155,5 @@ Not spec text — discussions on WHATWG's own issue trackers about gaps between 
 - [[concept-uri-reference-vs-whatwg-url]] — the `URIReference`-vs-`URL` type-design disagreement (alwinb vs. karwa) underlying the debate
 - [[concept-relative-url-api-proposals]] — catalog of proposed API shapes (`RelativeURL`, `URLPathAndHash`, `URIReference`, etc.) and independent reference implementations
 - [[concept-http-origin-form-vs-relative-reference]] — why HTTP origin-form request-targets (`/foo?bar`) are not RFC 3986 relative references, despite looking identical
-- [[concept-urlpattern-252-dummy-url-ambiguity]] — `whatwg/urlpattern#252`: the dummy-URL special-ness gap in canonicalization, annevk's fix across url#863 and urlpattern#255, still open
+- [[concept-urlpattern-252-dummy-url-ambiguity]] — `whatwg/urlpattern#252`: the dummy-URL special-ness gap in canonicalization; construction fixed via url#863 + urlpattern#269 (merged), a narrower routing-logic question remains open
 - [[concept-urlpattern-54-canonicalization-origin]] — `whatwg/urlpattern#54`: wanderview's original 2021 implementation of the canonicalize protocol/username/password/hostname/port/pathname/search/hash algorithms, replacing spec TODOs

@@ -16,10 +16,10 @@ Input: a domain string (post-IDNA processing) that ends with a numeric final lab
 
 1. Split input on `.` to get `parts`.
 2. If the last part is empty (trailing dot) → remove it; emit `IPv4-empty-part` validation error.
-3. If `parts.length > 4` → return failure (not an IPv4 address; keep as domain).
-4. For each part, call **parse an IPv4 number** → `result`, `validationError`.
-5. If any part fails → failure.
-6. If any part is > 255 → failure (unless it's the last part, which can represent the remaining octets).
+3. If `parts.length < 4` → emit `IPv4-too-few-parts` validation error (non-fatal: shorthand forms like `1.2.3` or a single 32-bit decimal are legacy-legal and continue to the next step).
+4. If `parts.length > 4` → emit `IPv4-too-many-parts` validation error and **return failure**. Unlike too-few, this is fatal: this parser only runs once the domain's final label has already been classified as "ends in a number" (see [[url-host-parsing]]), so failure here is a genuine host-parsing failure, not a silent fallback to treating the input as an ordinary domain.
+5. For each part, call **parse an IPv4 number** → `result`, `validationError`. If any part fails → failure.
+6. If any part is > 255 → emit `IPv4-out-of-range-part` validation error (unless it's the last part, which can represent the remaining octets).
 7. **Combine parts**: multiply accumulated value left by 256 per remaining part, add final part. E.g., `0xffff` with 1 part remaining = `0xffff0000... + part`.
 8. If combined value ≥ 2³² → failure (number too large).
 9. Return the 32-bit integer.
@@ -43,19 +43,23 @@ Result is always standard dotted-decimal (e.g., `127.0.0.1`).
 
 ## Validation Errors
 
-| Error | Cause |
-|-------|-------|
-| `IPv4-empty-part` | Trailing dot (e.g., `1.2.3.4.`) |
-| `IPv4-non-decimal-part` | Hex or octal notation used |
-| `IPv4-too-many-parts` | More than 4 dot-separated parts |
-| `IPv4-non-numeric-part` | Part contains non-digit characters |
-| `IPv4-out-of-range-part` | Part value > 255 (for non-final parts) |
+| Error | Cause | Fatal? |
+|-------|-------|--------|
+| `IPv4-empty-part` | Trailing dot (e.g., `1.2.3.4.`) | No |
+| `IPv4-too-few-parts` | Fewer than 4 dot-separated parts (e.g., `1.2.3`, or a bare decimal/hex number) | No — legacy shorthand |
+| `IPv4-too-many-parts` | More than 4 dot-separated parts | Yes — host parsing fails |
+| `IPv4-non-decimal-part` | Hex or octal notation used | No |
+| `IPv4-non-numeric-part` | Part contains non-digit characters | Yes |
+| `IPv4-out-of-range-part` | Part value > 255 (for non-final parts) | No |
+
+See [[url-validation-errors]] for the full reference table, including `IPv4-non-ASCII-input` (emitted one level up, by the host parser before the IPv4 parser is even invoked).
 
 ## See Also
 
 - [[url-host]]
 - [[url-host-parsing]]
 - [[url-ipv6]]
+- [[url-validation-errors]]
 
 ## Sources
 

@@ -15,7 +15,7 @@ Inputs: a request, plus optional callbacks (`processRequestBodyChunk`, `processR
 Steps (abbreviated):
 1. Assert the request's URL is non-null.
 2. If `request.keepalive` is set, run additional keepalive-specific checks (payload/body size limits, inflight-request bookkeeping).
-3. Resolve `request.client`/`request.origin` from the literal `"client"` placeholder to the actual environment settings object's origin.
+3. Resolve `request.client`/`request.origin` from the literal `"client"` placeholder to the actual environment settings object's [[url-concepts|origin]].
 4. Create fetch params bundling the request, a new **fetch controller**, and the processing callbacks.
 5. Invoke [[fetch-algorithm|main fetch]] with the fetch params, in parallel.
 6. Return the fetch controller immediately, so callers can [[fetch-abort|abort]] the in-flight fetch.
@@ -25,7 +25,7 @@ Steps (abbreviated):
 The dispatcher that applies cross-cutting policy before scheme-specific handling:
 
 1. Assert the request's *done* flag is unset; set it.
-2. If the request is a navigation request without a reserved client, return a network error (`TypeError`).
+2. If the request is a navigation request without a reserved client, return a [[fetch-network-error|network error]] (`TypeError`).
 3. If `request.mode` is `"websocket"`, hand off to the WebSocket/WebTransport establishment algorithms (out of scope for Fetch itself).
 4. Set **response tainting** to `"basic"` as the default, later overridden per [[fetch-cors|mode in HTTP fetch]].
 5. If `request.localURLsOnly` is set and the current URL isn't local (`about:`, `blob:`, `data:`, `file:`), return a network error.
@@ -56,6 +56,7 @@ Routes purely by `request.url`'s scheme:
 - [[fetch-abort]]
 - [[fetch-referrer-policy]]
 - [[fetch-security-considerations]]
+- [[fetch-network-error]]
 
 ## Sources
 

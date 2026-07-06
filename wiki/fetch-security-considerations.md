@@ -30,11 +30,11 @@ A `mode: "no-cors"` request (the default for e.g. `<img>`, `<script>` cross-orig
 
 ## Integrity Verification Guards Against Compromised Origins
 
-[[fetch-integrity|Subresource Integrity]] protects against a scenario CORS/credentials don't cover at all: a trusted-and-allowed origin serving unexpectedly modified content (compromised CDN, on-path tampering). Fetch treats a hash mismatch as a full network error rather than handing back the (wrong) content.
+[[fetch-integrity|Subresource Integrity]] protects against a scenario CORS/credentials don't cover at all: a trusted-and-allowed origin serving unexpectedly modified content (compromised CDN, on-path tampering). Fetch treats a hash mismatch as a full [[fetch-network-error|network error]] rather than handing back the (wrong) content.
 
 ## Timing Side Channels
 
-Even opaque/cross-origin responses leak *some* information through timing (size, cache status, error vs. success) unless explicitly gated: the [[fetch-cors|TAO check]] must pass before fine-grained Resource/Navigation Timing marks are exposed for a cross-origin resource, and opaque responses report only coarse start/end timestamps by default.
+Even opaque/cross-origin responses leak information through timing — total request duration reveals approximate response size and whether the response came from cache, and success/failure is distinguishable by how far the timeline progresses — unless explicitly gated: the [[fetch-cors|TAO check]] must pass before fine-grained Resource/Navigation Timing marks are exposed for a cross-origin resource, and opaque responses report only coarse start/end timestamps by default.
 
 ## Redirects Don't Leak Intermediate URLs
 
@@ -48,6 +48,7 @@ Even opaque/cross-origin responses leak *some* information through timing (size,
 - [[fetch-referrer-policy]]
 - [[fetch-integrity]]
 - [[fetch-redirect]]
+- [[fetch-network-error]]
 
 ## Sources
 

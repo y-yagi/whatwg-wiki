@@ -14,7 +14,7 @@ Each `URLPattern` component (protocol, username, password, hostname, port, pathn
 |---|---|
 | `*` | **Full wildcard** — matches any number of any characters, greedily |
 | `:name` | **Named group** — captures text as `name`, constrained by the component's delimiter code point (e.g. stops at `/` in `pathname`, `.` in `hostname`) |
-| `(regex)` | **Regex group** — custom matching logic; must be an ASCII-only regular expression, properly nested, and may not use lookahead/lookbehind |
+| `(regex)` | **Regex group** — custom matching logic; must be an ASCII-only regular expression, properly nested, and may not use lookahead/lookbehind. Unlike `:name`, a bare `(regex)` group is unnamed — the parser assigns it the next integer in sequence (`"0"`, `"1"`, ...), stringified, as its group name, so its captured text still shows up keyed in `URLPatternComponentResult.groups` (see [[urlpattern-exec-test]]) even though nothing in the pattern text named it |
 | `?` (after a group) | **Optional modifier** — zero or one occurrence |
 | `+` (after a group) | **One-or-more modifier** — repeats with the component's delimiter re-inserted between repetitions |
 | `*` (after a group) | **Zero-or-more modifier** — like `+` but also allows zero occurrences |

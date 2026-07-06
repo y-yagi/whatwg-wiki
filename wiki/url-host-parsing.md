@@ -15,7 +15,7 @@ The **host parser** takes a string and an `isOpaque` boolean, returning a host o
 3. Percent-decode `input`.
 4. Run **IDNA domain-to-ASCII** on the decoded string → `asciiDomain` or failure.
    - Emits `domain-invalid-code-point` validation error if forbidden domain code points exist.
-5. If `asciiDomain` ends in a number (final label is all ASCII digits, or looks like an IPv4 octet) → parse as **IPv4** and return or failure.
+5. If `asciiDomain` "ends in a number" (**ends-in-a-number checker**: split on `.`, drop a trailing empty part; the final label is either all ASCII digits, or parses without failure as a single [[url-ipv4|IPv4 number]] — decimal, hex, or octal) → parse as **IPv4** and return or failure.
 6. Return `asciiDomain` as a **domain**.
 
 ## IDNA Processing (domain-to-ASCII)

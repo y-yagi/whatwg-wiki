@@ -20,7 +20,7 @@ Fetch computes and attaches the `Referer` header (note the header name's histori
 
 - **Cross-origin requests**: policies like `origin`/`strict-origin`/`origin-when-cross-origin` reduce the referrer to just the scheme+host+port, dropping path/query/fragment.
 - **HTTPS→HTTP downgrade**: `strict-origin`/`strict-origin-when-cross-origin`/`no-referrer-when-downgrade` suppress the referrer entirely to avoid leaking a secure context's URL to an insecure destination.
-- **`unsafe-url`**: always sends the full referrer URL regardless of origin/scheme changes — discouraged, since it leaks the most information, but sometimes required for legacy interop.
+- **`unsafe-url`**: always sends the full referrer URL regardless of origin/scheme changes — discouraged, since it leaks the most information, but occasionally set deliberately by sites whose server-side routing or analytics depends on the full path/query of the referring page being visible cross-origin.
 - The referrer is never sent with user credentials or password components — those are stripped from the URL before it's ever considered a candidate value.
 
 ## Setting the Header

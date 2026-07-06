@@ -36,9 +36,9 @@ Triggered from [[fetch-http-fetch|HTTP fetch]] when `request.mode` is `"cors"` a
 2. Add `Access-Control-Request-Method` with the real request's method.
 3. Add `Access-Control-Request-Headers` listing the non-safelisted header names (sorted, comma-separated).
 4. Send via HTTP-network fetch directly, bypassing the HTTP cache.
-5. Run the **CORS check** against the preflight response; on failure, the whole fetch becomes a network error.
+5. Run the **CORS check** against the preflight response; on failure, the whole fetch becomes a [[fetch-network-error|network error]].
 6. Validate `Access-Control-Allow-Methods` and `Access-Control-Allow-Headers` permit the actual request's method/headers.
-7. On success, cache the preflight result keyed by origin/URL/method for up to 5 minutes (`Access-Control-Max-Age`, capped), so repeated requests to the same endpoint can skip the round-trip.
+7. On success, cache the preflight result keyed by origin/URL/method for a duration set by `Access-Control-Max-Age` (implementation-defined cap; not a fixed spec ceiling), so repeated requests to the same endpoint can skip the round-trip.
 8. Proceed with the original request.
 
 ## CORS Check
@@ -53,7 +53,7 @@ Applied to the *actual* response (and to the preflight response above):
 
 ## Origin Header
 
-Set on the outgoing request (Section 3.2) for: all CORS requests, and any non-GET/HEAD same-origin request (notably all `POST`s) — not just cross-origin ones, so servers can apply CSRF-style checks. Omitted when the [[fetch-referrer-policy|referrer policy]] would forbid disclosing the origin, or replaced with the literal string `"null"` for opaque origins.
+Set on the outgoing request (Section 3.2) for: all CORS requests, and any non-GET/HEAD same-origin request (notably all `POST`s) — not just cross-origin ones, so servers can apply CSRF-style checks. Omitted when the [[fetch-referrer-policy|referrer policy]] would forbid disclosing the origin, or replaced with the literal string `"null"` for [[url-concepts|opaque origins]].
 
 ## TAO (Timing-Allow-Origin) Check
 
@@ -61,7 +61,7 @@ Gatekeeps whether the Resource Timing / Navigation Timing APIs expose fine-grain
 
 1. If `request.mode` isn't `"cors"`, succeed (same-origin timing is always visible).
 2. If the `Timing-Allow-Origin` header is absent, fail.
-3. If its value is `*` or matches the serialized request origin, succeed; otherwise fail.
+3. If its value is `*`, or is a comma-separated list of origins containing the serialized request origin, succeed; otherwise fail.
 4. On failure, only coarse timing (start/end time) is exposed, not detailed marks.
 
 ## See Also
@@ -71,6 +71,9 @@ Gatekeeps whether the Resource Timing / Navigation Timing APIs expose fine-grain
 - [[fetch-credentials-mode]]
 - [[fetch-request-response]]
 - [[fetch-security-considerations]]
+- [[fetch-network-error]]
+- [[url-concepts]] — opaque origin, used as the `Origin` header value for opaque-origin requests
+- [[url-serialization]] — origin serialization used in CORS/TAO origin comparisons
 
 ## Sources
 

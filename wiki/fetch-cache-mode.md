@@ -17,7 +17,7 @@ updated: 2026-07-06
 | `"reload"` | Bypass the cache on the way to the network (always issue a full network request), but still store the fresh response into the cache afterward. |
 | `"no-cache"` | Always revalidate: if a cached entry exists, issue a conditional request (`If-None-Match`/`If-Modified-Since`) regardless of freshness; if none exists, issue a normal request. |
 | `"force-cache"` | Use any cached response — fresh or stale — without revalidation if one exists at all; only go to the network on a cache miss. |
-| `"only-if-cached"` | Use a cached response if present; otherwise return a network error without ever touching the network. Only valid combined with `request.mode: "same-origin"`. |
+| `"only-if-cached"` | Use a cached response if present; otherwise return a [[fetch-network-error|network error]] without ever touching the network. Only valid combined with `request.mode: "same-origin"`. |
 
 ## Freshness and Validation
 
@@ -30,6 +30,7 @@ updated: 2026-07-06
 - [[fetch-http-fetch]]
 - [[fetch-request-response]]
 - [[fetch-credentials-mode]]
+- [[fetch-network-error]]
 
 ## Sources
 

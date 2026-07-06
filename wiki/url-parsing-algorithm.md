@@ -39,6 +39,7 @@ Two entry points both delegate to the basic parser:
 
 See [[url-parser-states]] for the full state reference.
 
+- **Scheme start** — entry state for every parse; dispatches to Scheme or No scheme based on the first character.
 - **No scheme** — determine if URL is relative or absolute based on first character and base URL presence.
 - **Scheme** — accumulate and classify the scheme.
 - **Special relative or authority** / **Path or authority** — disambiguate `//` authority from path.

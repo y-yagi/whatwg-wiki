@@ -24,7 +24,7 @@ Default ports: `ftp`→21, `http`/`ws`→80, `https`/`wss`→443.
 
 A **base URL** is a URL record used to resolve relative references. When parsing a relative URL like `/path` or `../other`, the base URL provides the scheme, host, and path context.
 
-The browser's base URL for a document comes from the `<base href>` element or the document's own URL.
+Which URL record a document actually hands the parser as its base is an HTML-spec concept, not part of the URL Standard itself: HTML defines a *fallback base URL* (the document's own address, or its creator's for `about:blank`/`srcdoc`), then a *document base URL* that starts from the fallback but is overridden by the frozen base URL of the first valid `<base href>` element, if any.
 
 ## Opaque Origins vs. Tuple Origins
 
@@ -43,10 +43,7 @@ For `file:` URLs on Windows, the spec handles drive letter paths like `C:\`:
 
 ## Opaque Path
 
-A URL has an **opaque path** when:
-- It has no authority (no host), AND
-- It is not a special URL, AND  
-- The path is a single string (not a list of segments).
+Per [[url-record|the URL record's own definition]], a URL **has an opaque path** exactly when its path is a single string (a URL path segment) rather than a list of segments — nothing more. In practice this only ever happens for URLs with no authority and a non-special scheme (special URLs always get a list path, and any URL with an authority also gets a list path), so those two properties are reliable *symptoms* of an opaque path, not part of its definition.
 
 Example: `data:text/plain,hello` has an opaque path `text/plain,hello`.
 Opaque-path URLs cannot have a username, password, or port.

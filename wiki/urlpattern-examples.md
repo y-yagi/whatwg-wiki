@@ -15,7 +15,7 @@ const pattern = new URLPattern("https://example.com/:category/*");
 ```
 
 - **Matches:** `https://example.com/products/`, `https://example.com/blog/our-greatest-product-ever`
-- **Does not match:** `https://example.com/` (nothing to fill `:category`/`*`), `http://example.com/products/` (wrong protocol — `http` ≠ `https`), `https://example.com:8443/products/` (port pattern defaults to the empty string once hostname is given explicitly, so a non-default port fails; see [[urlpattern-components]])
+- **Does not match:** `https://example.com/` (nothing to fill `:category`/`*`), `http://example.com/products/` (wrong protocol — `http` ≠ `https`), `https://example.com:8443/products/` (per the spec's own note: since `hostname` is specified in this constructor string and `port` is not, `port` collapses to matching only `https`'s default port 443 — a non-default port like `8443` fails; write `:*` after the hostname to match any port; see [[urlpattern-components]])
 
 ## Complex: Optional Protocol Suffix, Optional Subdomain, Regex-Constrained Group, Fixed Fragment
 

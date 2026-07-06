@@ -18,9 +18,9 @@ Navigation requests (top-level page loads) default to `"include"`; subresource r
 
 ## Request Modes (`request.mode`)
 
-- **`"same-origin"`**: request URL must be same-origin with the client, or the fetch is a network error — no cross-origin access path at all.
+- **`"same-origin"`**: request URL must be same-origin with the client, or the fetch is a [[fetch-network-error|network error]] — no cross-origin access path at all.
 - **`"cors"`**: cross-origin allowed subject to the [[fetch-cors|CORS protocol]] (preflight where required, CORS check on the response); response tainting `"cors"`.
-- **`"no-cors"`**: cross-origin allowed with no CORS validation, but the response is **opaque** — script gets a response object with status `0`, no headers, no body access. Restricted to CORS-safelisted methods and headers (no arbitrary custom headers), since there's no server-side opt-in check possible.
+- **`"no-cors"`**: cross-origin allowed with no CORS validation, but the response is **opaque** — script gets a response object with status `0`, no headers, no body access. Restricted to [[fetch-cors|CORS-safelisted methods and headers]] (no arbitrary custom headers), since there's no server-side opt-in check possible.
 - **`"navigate"`**: reserved for top-level/frame navigations; response tainting `"basic"`.
 - **`"websocket"`** / **`"webtransport"`**: reserved for the WebSocket/WebTransport establishment handshakes, which delegate connection setup outside the ordinary fetch flow.
 
@@ -34,6 +34,7 @@ Mode and credentials mode compose independently: a `no-cors` request can still c
 - [[fetch-headers]]
 - [[fetch-http-fetch]]
 - [[fetch-security-considerations]]
+- [[fetch-network-error]]
 
 ## Sources
 

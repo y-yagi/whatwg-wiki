@@ -11,9 +11,9 @@ updated: 2026-07-06
 ## Verification Steps
 
 1. If `request.integrity` is the empty string, skip verification entirely — no hash was requested.
-2. Once the response body is fully received (verification requires the complete body, so it cannot happen incrementally on a streaming response), parse the integrity string into a list of `algorithm-base64value` pairs (e.g. multiple hashes may be given; the strongest supported algorithm is used per the SRI spec's precedence rules).
+2. Once the response body is fully received (verification requires the complete body, so it cannot happen incrementally on a streaming response), parse the integrity string into a list of `algorithm-base64value` pairs (e.g. multiple hashes may be given; when they use different algorithms, only the strongest is checked, per the SRI spec's fixed precedence `sha512` > `sha384` > `sha256`).
 3. Compute the digest of the response body bytes using each listed algorithm.
-4. If none of the computed digests match a provided value, replace the response with a **network error** — the resource is treated as if the fetch failed outright, not merely as an invalid resource.
+4. If none of the computed digests match a provided value, replace the response with a [[fetch-network-error|network error]] — the resource is treated as if the fetch failed outright, not merely as an invalid resource.
 5. Otherwise, the original response proceeds unchanged.
 
 ## Why Fetch, Not HTML/SRI Alone
@@ -29,6 +29,7 @@ Integrity metadata protects against a compromised or MITM'd CDN silently serving
 - [[fetch-http-fetch]]
 - [[fetch-security-considerations]]
 - [[fetch-request-response]]
+- [[fetch-network-error]]
 
 ## Sources
 
