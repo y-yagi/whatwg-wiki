@@ -26,7 +26,7 @@ RFC 6454 recommends — but does not mandate — that user agents treat each `fi
 
 ## The `Origin` Header (§7)
 
-RFC 6454 also specifies the HTTP `Origin` request header: a serialized origin sent with certain requests (cross-origin `XMLHttpRequest`/`fetch`, some form submissions) so servers can make access-control or CSRF decisions without parsing a full `Referer` URL.
+RFC 6454 also specifies the HTTP `Origin` request header: a serialized origin sent with certain requests (cross-origin `XMLHttpRequest`/`fetch`, some form submissions) so servers can make access-control or CSRF decisions without parsing a full `Referer` URL. The WHATWG Fetch Standard is the document that now actually specifies when this header is attached — see [[fetch-cors|Fetch's Origin header rules]], which send it on all CORS requests and same-origin non-GET/HEAD requests, not only cross-origin ones.
 
 ## Security and Privacy Considerations (§8)
 
@@ -43,6 +43,7 @@ The WHATWG URL Standard names superseding RFC 6454 as one of its four stated [[u
 - [[url-goals]] — origin superseding as one of the URL Standard's four stated goals
 - [[uri-vs-whatwg-url]] — origin as one axis of the broader RFC 3986/WHATWG contrast
 - [[uri-security-considerations]] — RFC 3986's own, narrower security-considerations section
+- [[fetch-cors]] — Fetch's CORS protocol, which consumes origin comparisons for the CORS check and Origin header rules
 
 ## Sources
 

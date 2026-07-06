@@ -6,6 +6,20 @@
 
 ## Fetch
 
+- [[fetch-algorithm]] — top-level fetch(), main fetch, scheme fetch routing (about/blob/data/file/http)
+- [[fetch-http-fetch]] — HTTP fetch, HTTP-network-or-cache fetch, HTTP-network fetch
+- [[fetch-redirect]] — HTTP-redirect fetch: status-code method/body rewriting, redirect count limit, opaque-redirect
+- [[fetch-cors]] — CORS protocol: response tainting, safelisted methods/headers, preflight fetch, CORS check, TAO check, Origin header
+- [[fetch-request-response]] — Request/Response JS interfaces, constructors, guard concept
+- [[fetch-headers]] — Headers interface, header list operations, guards, forbidden request/response headers
+- [[fetch-body]] — Body mixin: internal body concept, clone/fully-read/incrementally-read, streams integration
+- [[fetch-integrity]] — Subresource Integrity verification during HTTP-network fetch
+- [[fetch-referrer-policy]] — referrer resolution and referrer policy application
+- [[fetch-cache-mode]] — cache modes (default/no-store/reload/no-cache/force-cache/only-if-cached), freshness/validation
+- [[fetch-credentials-mode]] — credentials modes (omit/same-origin/include) and request modes (same-origin/cors/no-cors/navigate)
+- [[fetch-abort]] — fetch controller, AbortController/AbortSignal integration, cancellation checks
+- [[fetch-security-considerations]] — cross-cutting security summary: opaque responses, CORS opt-in, forbidden headers, referrer leakage, credentials, integrity, timing, redirects
+
 ## URL
 
 - [[url-record]] — URL record struct: fields (scheme, host, port, path, query, fragment), path types, opaque path
