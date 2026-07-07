@@ -4,6 +4,8 @@
 
 ## HTML
 
+*(Not yet ingested. No html.spec.whatwg.org sources have been processed — see CLAUDE.md's scope table: event loop, parsing, scripting, browsing context, forms, workers.)*
+
 ## Fetch
 
 - [[fetch-algorithm]] — top-level fetch(), main fetch, scheme fetch routing (about/blob/data/file/http)
@@ -40,11 +42,19 @@
 
 ## Streams
 
+*(Not yet ingested. No streams.spec.whatwg.org sources have been processed — see CLAUDE.md's scope table: readable/writable/transform streams, piping, backpressure.)*
+
 ## DOM
+
+*(Not yet ingested. No dom.spec.whatwg.org sources have been processed — see CLAUDE.md's scope table: node tree, events, ranges, mutation observers.)*
 
 ## Encoding
 
+*(Not yet ingested. No encoding.spec.whatwg.org sources have been processed — see CLAUDE.md's scope table: encodings, UTF-8 decode/encode.)*
+
 ## Infra
+
+*(Not yet ingested. No infra.spec.whatwg.org sources have been processed — see CLAUDE.md's scope table: primitives shared across all specs — sequences, maps, sets, strings.)*
 
 ## Cross-Spec Concepts
 
